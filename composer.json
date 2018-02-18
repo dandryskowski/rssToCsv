@@ -1,0 +1,30 @@
+{
+    "name": "darek/dariusz_andryskowski_projekt",
+    "description": "Export data from RSS/Atom to csv file",
+    "type": "project",
+    "homepage": "https://github.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dariusz Andryskowski",
+            "email": "dariusz@andryskowski.pl",
+            "homepage": "http://andryskowski.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "DariuszAndryskowski\\App\\": ["src"],
+            "DariuszAndryskowski\\App\\Config\\": ["src"],
+            "DariuszAndryskowski\\App\\InterfaceLib\\": ["src"],
+            "DariuszAndryskowski\\App\\Lib\\": ["src"],
+            "DariuszAndryskowski\\App\\Model\\": ["src"]
+        }
+    }
+
+}
