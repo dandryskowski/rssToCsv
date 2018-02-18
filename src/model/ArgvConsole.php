@@ -1,4 +1,10 @@
 <?php
+/**
+ * Class console data
+ * User: Dariusz Andryskowski
+ * Date: 19.02.2018
+ */
+
 namespace DariuszAndryskowski\App\Model;
 
 use DariuszAndryskowski\App\Config\ConfigEnum;
@@ -44,13 +50,15 @@ class ArgvConsole {
 
     /**
      * Set data argv from console
+     * @param array $argv
      */
-    public function setArgvConsole($argv) {
+    public function setArgvConsole( $argv ) {
         $this->argvConsole = $argv;
     }
 
     /**
      * Get data argv from console
+     * @return string
      */
     public function getArgvConsole() {
         return $this->argvConsole;
@@ -58,16 +66,15 @@ class ArgvConsole {
 
     /**
      * Set path location run file
-     * @param $localPathArgv
-     * @return mixed
+     * @param string $localPathArgv
      */
-    public function setLocalPathArgv($localPathArgv) {
+    public function setLocalPathArgv( $localPathArgv ) {
         $this->localPathArgv = $localPathArgv;
     }
 
     /**
      * Get path location run file
-     * @return mixed
+     * @return string
      */
     public function getLocalPathArgv() {
         return $this->localPathArgv;
@@ -75,12 +82,11 @@ class ArgvConsole {
 
     /**
      * Set param action generate file
-     * @param $actionArgv
-     * @return mixed
+     * @param string $actionArgv - set type action generate CSV
      */
-    public function setActionArgv($actionArgv) {
+    public function setActionArgv( $actionArgv ) {
 
-        switch ( mb_strtolower($actionArgv, 'UTF-8') ) {
+        switch ( mb_strtolower( $actionArgv, 'UTF-8') ) {
             case ConfigEnum::CSV_SIMPLE;
                 $this->actionArgv = ConfigEnum::CSV_SIMPLE;
                 break;
@@ -95,7 +101,7 @@ class ArgvConsole {
 
     /**
      * Get param action generate file
-     * @return mixed
+     * @return string
      */
     public function getActionArgv() {
         return $this->actionArgv;
@@ -104,8 +110,7 @@ class ArgvConsole {
 
     /**
      * Set addres url with data xml
-     * @param $urlArgv
-     * @return mixed
+     * @param string $urlArgv - address URL RSS/ATOM
      */
     public function setUrlArgv($urlArgv) {
         $this->urlArgv = $urlArgv;
@@ -113,7 +118,7 @@ class ArgvConsole {
 
     /**
      * Get addres url with data xml
-     * @return mixed
+     * @return string
      */
     public function getUrlArgv() {
         return $this->urlArgv;
@@ -122,12 +127,12 @@ class ArgvConsole {
 
     /**
      * Set name export file
-     * @param $exportNameFileArgv
+     * @param string $argv
      */
-    public function setExportNameFile($argv) {
+    public function setExportNameFile( $argv ) {
 
         // set default name file
-        if ( !isset($argv[3]) ) {
+        if ( !isset( $argv[3] ) ) {
             $this->exportNameFileArgv = ConfigEnum::NAME_EXPORT_FILE;
         } else { // set name file from console
             $this->exportNameFileArgv = $argv[3];
@@ -136,7 +141,7 @@ class ArgvConsole {
 
     /**
      * Get name export file
-     * @return mixed
+     * @return string
      */
     public function getExportNameFile() {
         return $this->exportNameFileArgv;
@@ -148,10 +153,10 @@ class ArgvConsole {
      */
     public function separationArgvData() {
 
-        $this->setLocalPathArgv($this->argvConsole[0]);
-        $this->setActionArgv($this->argvConsole[1]);
-        $this->setUrlArgv($this->argvConsole[2]);
-        $this->setExportNameFile($this->argvConsole);
+        $this->setLocalPathArgv( $this->argvConsole[0] );
+        $this->setActionArgv( $this->argvConsole[1] );
+        $this->setUrlArgv( $this->argvConsole[2] );
+        $this->setExportNameFile( $this->argvConsole );
     }
 
 }

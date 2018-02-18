@@ -1,13 +1,21 @@
 <?php
+/**
+ * Validator data
+ * User: Dariusz Andryskowski
+ * Date: 19.02.2018
+ */
+
 namespace DariuszAndryskowski\App\Lib;
+
 
 class Validator {
 
-
     private static $instance;
-    private $logs;
 
-
+    /**
+     * Instance class Validator
+     * @return Validator
+     */
     public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new Validator();
@@ -17,7 +25,7 @@ class Validator {
 
     /**
      * Function validate address url
-     * @param $url
+     * @param string $url
      * @return bool
      */
     public function checkValidUrl($url) {
@@ -31,7 +39,7 @@ class Validator {
 
     /**
      * Function check exist url
-     * @param $url
+     * @param string $url
      * @return bool
      */
     function checkExistUrl($url){

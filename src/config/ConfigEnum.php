@@ -1,4 +1,10 @@
 <?php
+/**
+ * Config enums
+ * User: Dariusz Andryskowski
+ * Date: 19.02.2018
+ */
+
 namespace DariuszAndryskowski\App\Config;
 
 class ConfigEnum {
