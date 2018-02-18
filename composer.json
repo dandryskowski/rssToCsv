@@ -2,7 +2,7 @@
     "name": "darek/dariusz_andryskowski_projekt",
     "description": "Export data from RSS/Atom to csv file",
     "type": "project",
-    "homepage": "https://github.com/",
+    "homepage": "https://github.com/dandryskowski/rssToCsv",
     "license": "MIT",
     "authors": [
         {
