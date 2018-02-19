@@ -43,8 +43,12 @@ class Validator
      * @param $url
      * @return bool
      */
-    public function validateFeed( $url )
+    public function validateFeed($url)
     {
+        if (empty($url)) {
+            return false;
+        }
+
         $validatorUrl = 'http://feedvalidator.org/check.cgi?url=';
 
         if ( $validationResponse = @file_get_contents($validatorUrl . urlencode($url)) ) {

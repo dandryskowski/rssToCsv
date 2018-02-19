@@ -28,10 +28,13 @@ class CsvDocument implements IGenerator
      * @param string $action - action for generate document
      * @return boolean - true:generate ok; false: error generate
      */
-    public function generator($arrayData, $nameFile, $action)
+    public function generator($arrayData, $nameFile, $action = ConfigEnum::CSV_SIMPLE)
     {
         $message = array();
         try {
+            // validation input data before generate CSV file
+            $this->validateInputData($arrayData, $nameFile);
+
             // generate simple CSV
             if ($action == ConfigEnum::CSV_SIMPLE) {
                 $fp = @fopen( $nameFile, 'w' );
@@ -60,7 +63,7 @@ class CsvDocument implements IGenerator
 
             fclose($fp);
 
-            $message['message'] = 'Success! Finish create CSV file.';
+            $message['message'] = 'Success! Finish create CSV file. Application use action: ' . $action;
             $message['status'] = 'success';
 
             return $message;
@@ -79,6 +82,28 @@ class CsvDocument implements IGenerator
     public function headerDocument()
     {
         return $this->headerDocument;
+    }
+
+    /**
+     * Function validation input data before generate CSV file
+     * @return boolean
+     */
+    public function validateInputData($arrayData, $nameFile) {
+        if(!isset($arrayData) || count($arrayData) == 0 ) {
+            $message['message'] = 'Error! Data for save is empty.';
+            $message['status'] = 'error';
+
+            return $message;
+        }
+
+        if(!isset($nameFile)) {
+            $message['message'] = 'Error! Name file not exist.';
+            $message['status'] = 'error';
+
+            return $message;
+        }
+
+        return true;
     }
 }
 ?>
