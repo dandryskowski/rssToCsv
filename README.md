@@ -1,6 +1,7 @@
-Project Dariusz Andryskowski
+Export RSS/Atom to CSV file
 ============================
-### Export RSS/Atom to CSV file
+App php parse RSS/ATOM data and export to CSV
+Fields output in CSV: title, creator, link, description, pubDate
 
 - [Installation](#installation)
 - [Usage](#usage)

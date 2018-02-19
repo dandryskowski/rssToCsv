@@ -4,9 +4,11 @@
  */
 namespace DariuszAndryskowski\App;
 
+use DariuszAndryskowski\App\Config\MessagesEnum;
 use DariuszAndryskowski\App\Lib\Validator;
 use DariuszAndryskowski\App\Model\ArgvConsole;
 use DariuszAndryskowski\App\Model\CsvDocument;
+use DariuszAndryskowski\App\Model\Messages;
 use DariuszAndryskowski\App\Model\ParserRss;
 
 class AppClass extends ArgvConsole
@@ -17,13 +19,14 @@ class AppClass extends ArgvConsole
     public function runApp()
     {
         $validator = Validator::getInstance();
+        $messages = Messages::getInstance();
 
         if (!$validator->checkValidUrl($this->getUrlArgv())) {
-            throw new \Exception('Error! The URL may not be empty or NULL');
+            $messages->display('Error! The URL may not be empty or NULL', MessagesEnum::ERROR);
         }
 
         if (!$validator->checkExistUrl($this->getUrlArgv())) {
-            throw new \Exception('Error! Address URL not exist');
+            $messages->display('Error! Address URL not exist or ', MessagesEnum::ERROR);
         }
 
         // parse data from RSS/Atom
@@ -31,17 +34,17 @@ class AppClass extends ArgvConsole
         $arrayListArticleRss = $parser->parseData($this->getUrlArgv());
 
         if (count($arrayListArticleRss) == 0) {
-            throw new \Exception('Error! Data parse site URL is empty');
+            $messages->display('Error! Data parse site "'. $this->getUrlArgv() .'"" is empty', MessagesEnum::ERROR);
         }
 
         // generate document CSV
         $csvDoc = new CsvDocument($arrayListArticleRss);
-        $resultGenerateScv = $csvDoc->generator($arrayListArticleRss, $this->getExportNameFile(), $this->getActionArgv());
+        $resultGenerateCsv = $csvDoc->generator($arrayListArticleRss, $this->getExportNameFile(), $this->getActionArgv());
 
-        if ($resultGenerateScv == true) {
-            echo 'Success! Parse RSS/Atom and generate csv.';
+        if ($resultGenerateCsv == true) {
+            $messages->display('Success! Finish create CSV file', MessagesEnum::SUCCESS);
         } else {
-            echo 'Error! Not generate csv.';
+            $messages->display('Error! Not create CSV', MessagesEnum::ERROR);
         }
     }
 
