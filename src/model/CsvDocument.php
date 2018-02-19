@@ -24,11 +24,11 @@ class CsvDocument implements IGenerator
     /**
      * Function generate csv document
      * @param array $arrayData - list data for save
-     * @param strin $nameFile - name generate file
+     * @param string $nameFile - name generate file
      * @param string $action - action for generate document
-     * @return boolen - true:generate ok; false: error generate
+     * @return boolean - true:generate ok; false: error generate
      */
-    public function generator($arrayData , $nameFile, $action)
+    public function generator($arrayData, $nameFile, $action)
     {
         $message = array();
         try {

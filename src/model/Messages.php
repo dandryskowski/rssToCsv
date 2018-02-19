@@ -11,8 +11,8 @@ class Messages
     private static $instance;
 
     /**
-     * Instance class Validator
-     * @return Validator
+     * Instance class Messages
+     * @return Messages
      */
     public static function getInstance()
     {

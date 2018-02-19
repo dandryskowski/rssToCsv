@@ -11,7 +11,7 @@ use DariuszAndryskowski\App\Model\ParserRss;
 /**
  * Application parses a RSS/Atom feed and generates a CSV file
  */
-class AppClass extends ArgvConsole
+class Application extends ArgvConsole
 {
     /**
      * Function run app parse RSS/Atom and generate CSV file
@@ -22,7 +22,7 @@ class AppClass extends ArgvConsole
         $messages = Messages::getInstance();
 
         if (!$validator->checkValidUrl($this->getUrlArgv())) {
-            $messages->display('Error! The URL may not be empty or NULL.', MessageTypes::ERROR);
+            $messages->display('Error! Wrong URL or URL is empty', MessageTypes::ERROR);
         }
 
         if (!$validator->validateFeed($this->getUrlArgv())) {

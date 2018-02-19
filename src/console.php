@@ -1,16 +1,16 @@
 <?php
 require "./vendor/autoload.php";
 
-require_once ('AppClass.php');
+require_once ('Application.php');
 
-use DariuszAndryskowski\App\AppClass;
+use DariuszAndryskowski\App\Application;
 
 if (http_response_code()) {
     echo 'Error! Use console if You want generate CSV';
     exit;
 }
 
-$app = new AppClass();
+$app = new Application();
 
 // set param from CLI
 $app->setArgvConsole($argv);
