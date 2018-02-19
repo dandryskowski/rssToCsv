@@ -1,9 +1,9 @@
 <?php
+namespace DariuszAndryskowski\App\Config;
+
 /**
  * Config enums
  */
-namespace DariuszAndryskowski\App\Config;
-
 class ConfigEnum
 {
     /**
@@ -21,3 +21,4 @@ class ConfigEnum
      */
     const CSV_EXTENDED = 'csv:extended';
 }
+?>

@@ -1,9 +1,9 @@
 <?php
+namespace DariuszAndryskowski\App\Lib\InterfaceLib;
+
 /**
  * Interface parser
  */
-namespace DariuszAndryskowski\App\Lib\InterfaceLib;
-
 interface IParser
 {
     /**
@@ -12,5 +12,5 @@ interface IParser
      * @return mixed
      */
     public function parseData($argv);
-
 }
+?>

@@ -1,10 +1,10 @@
 <?php
-/**
-* Message enums
-*/
-namespace DariuszAndryskowski\App\Config;
+namespace DariuszAndryskowski\App\Model;
 
-class MessagesEnum
+/**
+ * Message enums
+ */
+class MessageTypes
 {
     /**
      * Message success
@@ -16,3 +16,4 @@ class MessagesEnum
      */
     const ERROR = 'error';
 }
+?>

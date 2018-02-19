@@ -1,12 +1,17 @@
 <?php
+namespace DariuszAndryskowski\App\Lib;
+
 /**
  * Validator data
  */
-namespace DariuszAndryskowski\App\Lib;
-
 class Validator
 {
     private static $instance;
+
+    /**
+     * Constructor
+     */
+    private function __construct() {}
 
     /**
      * Instance class Validator
@@ -38,7 +43,7 @@ class Validator
      * @param $url
      * @return bool
      */
-    function validateFeed( $url )
+    public function validateFeed( $url )
     {
         $validatorUrl = 'http://feedvalidator.org/check.cgi?url=';
 
@@ -53,3 +58,4 @@ class Validator
         }
     }
 }
+?>

@@ -1,11 +1,11 @@
 <?php
+namespace DariuszAndryskowski\App\Model;
+
+use DariuszAndryskowski\App\Model\MessageTypes;
+
 /**
  * Class messages about error and success action (description)
  */
-namespace DariuszAndryskowski\App\Model;
-
-use DariuszAndryskowski\App\Config\MessagesEnum;
-
 class Messages
 {
     private static $instance;
@@ -27,12 +27,13 @@ class Messages
      * @param string $message - message to display
      * @param string $typeMessage - type message (error/success)
      */
-    public static function display($message, $typeMessage = MessagesEnum::ERROR)
+    public static function display($message, $typeMessage = MessageTypes::ERROR)
     {
         echo $message;
 
-        if ($typeMessage === MessagesEnum::ERROR) {
+        if ($typeMessage === MessageTypes::ERROR) {
             exit;
         }
     }
 }
+?>

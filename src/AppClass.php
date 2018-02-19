@@ -1,16 +1,16 @@
 <?php
-/**
- * Application parse RSS/Atom and generate CSV
- */
 namespace DariuszAndryskowski\App;
 
-use DariuszAndryskowski\App\Config\MessagesEnum;
 use DariuszAndryskowski\App\Lib\Validator;
 use DariuszAndryskowski\App\Model\ArgvConsole;
 use DariuszAndryskowski\App\Model\CsvDocument;
 use DariuszAndryskowski\App\Model\Messages;
+use DariuszAndryskowski\App\Model\MessageTypes;
 use DariuszAndryskowski\App\Model\ParserRss;
 
+/**
+ * Application parses a RSS/Atom feed and generates a CSV file
+ */
 class AppClass extends ArgvConsole
 {
     /**
@@ -22,11 +22,11 @@ class AppClass extends ArgvConsole
         $messages = Messages::getInstance();
 
         if (!$validator->checkValidUrl($this->getUrlArgv())) {
-            $messages->display('Error! The URL may not be empty or NULL', MessagesEnum::ERROR);
+            $messages->display('Error! The URL may not be empty or NULL.', MessageTypes::ERROR);
         }
 
         if (!$validator->validateFeed($this->getUrlArgv())) {
-            $messages->display('Error! Data is not valid XML ', MessagesEnum::ERROR);
+            $messages->display('Error! Data is not valid XML.', MessageTypes::ERROR);
         }
 
         // parse data from RSS/Atom
@@ -34,7 +34,7 @@ class AppClass extends ArgvConsole
         $arrayListArticleRss = $parser->parseData($this->getUrlArgv());
 
         if (count($arrayListArticleRss) == 0) {
-            $messages->display('Error! Data parse site "'. $this->getUrlArgv() .'"" is empty', MessagesEnum::ERROR);
+            $messages->display('Error! Data parse site "'. $this->getUrlArgv() .'"" is empty', MessageTypes::ERROR);
         }
 
         // generate document CSV
@@ -42,10 +42,10 @@ class AppClass extends ArgvConsole
         $resultGenerateCsv = $csvDoc->generator($arrayListArticleRss, $this->getExportNameFile(), $this->getActionArgv());
 
         if ($resultGenerateCsv['status'] == 'success') {
-            $messages->display($resultGenerateCsv['message'], MessagesEnum::SUCCESS);
+            $messages->display($resultGenerateCsv['message'], MessageTypes::SUCCESS);
         } else {
-            $messages->display($resultGenerateCsv['message'], MessagesEnum::ERROR);
+            $messages->display($resultGenerateCsv['message'], MessageTypes::ERROR);
         }
     }
-
 }
+?>

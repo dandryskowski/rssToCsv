@@ -1,12 +1,12 @@
 <?php
-/**
- * Class generate CSV document
- */
 namespace DariuszAndryskowski\App\Model;
 
 use DariuszAndryskowski\App\Config\ConfigEnum;
 use DariuszAndryskowski\App\Lib\InterfaceLib\IGenerator;
 
+/**
+ * Class generate CSV document
+ */
 class CsvDocument implements IGenerator
 {
     /**
@@ -42,7 +42,7 @@ class CsvDocument implements IGenerator
             }
 
             if ($fp == false) {
-                $message['message'] = 'Error! Permission denied create/open file. Check the path for the file or close file if You opened.';
+                $message['message'] = 'Error! Permission denied create/open the file. Check the path for the file or close file if You opened.';
                 $message['status'] = 'error';
 
                 return $message;
@@ -81,3 +81,4 @@ class CsvDocument implements IGenerator
         return $this->headerDocument;
     }
 }
+?>

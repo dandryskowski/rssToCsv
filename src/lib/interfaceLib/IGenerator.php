@@ -1,9 +1,9 @@
 <?php
+namespace DariuszAndryskowski\App\Lib\InterfaceLib;
+
 /**
  * Interfce generate
  */
-namespace DariuszAndryskowski\App\Lib\InterfaceLib;
-
 interface IGenerator
 {
     /**
@@ -15,3 +15,4 @@ interface IGenerator
      */
     public function generator( $arrayData , $nameFile, $action );
 }
+?>

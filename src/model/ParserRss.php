@@ -1,12 +1,11 @@
 <?php
-/**
- * Class parse data from RSS/Atom
- */
 namespace DariuszAndryskowski\App\Model;
 
 use DariuszAndryskowski\App\Lib\InterfaceLib\IParser;
 
-
+/**
+ * Class parse data from RSS/Atom
+ */
 class ParserRss implements IParser
 {
     public $articleData = array();
@@ -51,3 +50,4 @@ class ParserRss implements IParser
         }
     }
 }
+?>

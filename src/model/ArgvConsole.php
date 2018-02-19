@@ -1,11 +1,11 @@
 <?php
-/**
- * Class console data
- */
 namespace DariuszAndryskowski\App\Model;
 
 use DariuszAndryskowski\App\Config\ConfigEnum;
 
+/**
+ * Class console data
+ */
 class ArgvConsole
 {
     /**
@@ -159,3 +159,4 @@ class ArgvConsole
         $this->setExportNameFile($this->argvConsole);
     }
 }
+?>
