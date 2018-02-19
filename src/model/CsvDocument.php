@@ -30,14 +30,22 @@ class CsvDocument implements IGenerator
      */
     public function generator($arrayData , $nameFile, $action)
     {
+        $message = array();
         try {
             // generate simple CSV
             if ($action == ConfigEnum::CSV_SIMPLE) {
-                $fp = fopen( $nameFile, 'w' );
+                $fp = @fopen( $nameFile, 'w' );
             }
             // generate extended CSV
             if ($action == ConfigEnum::CSV_EXTENDED) {
-                $fp = fopen($nameFile, 'a');
+                $fp = @fopen($nameFile, 'a');
+            }
+
+            if ($fp == false) {
+                $message['message'] = 'Error! Permission denied create/open file. Check the path for the file or close file if You opened.';
+                $message['status'] = 'error';
+
+                return $message;
             }
 
             // add header element in CSV
@@ -52,9 +60,15 @@ class CsvDocument implements IGenerator
 
             fclose($fp);
 
-            return true;
+            $message['message'] = 'Success! Finish create CSV file.';
+            $message['status'] = 'success';
+
+            return $message;
         } catch(\Exception $e) {
-            return false;
+            $message['message'] = 'Error! Error parse data.';
+            $message['status'] = 'error';
+
+            return $message;
         }
     }
 

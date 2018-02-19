@@ -34,24 +34,22 @@ class Validator
     }
 
     /**
-     * Function check exist url
-     * @param string $url
+     * Validate Rss feed
+     * @param $url
      * @return bool
      */
-    function checkExistUrl($url)
+    function validateFeed( $url )
     {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $validatorUrl = 'http://feedvalidator.org/check.cgi?url=';
 
-        if ($code == 200) {
-            $status = true;
+        if ( $validationResponse = @file_get_contents($validatorUrl . urlencode($url)) ) {
+            if ( stristr( $validationResponse , 'This is a valid RSS feed' ) !== false ) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            $status = false;
+            return false;
         }
-
-        curl_close($ch);
-        return $status;
     }
 }

@@ -25,8 +25,8 @@ class AppClass extends ArgvConsole
             $messages->display('Error! The URL may not be empty or NULL', MessagesEnum::ERROR);
         }
 
-        if (!$validator->checkExistUrl($this->getUrlArgv())) {
-            $messages->display('Error! Address URL not exist or ', MessagesEnum::ERROR);
+        if (!$validator->validateFeed($this->getUrlArgv())) {
+            $messages->display('Error! Data is not valid XML ', MessagesEnum::ERROR);
         }
 
         // parse data from RSS/Atom
@@ -41,10 +41,10 @@ class AppClass extends ArgvConsole
         $csvDoc = new CsvDocument($arrayListArticleRss);
         $resultGenerateCsv = $csvDoc->generator($arrayListArticleRss, $this->getExportNameFile(), $this->getActionArgv());
 
-        if ($resultGenerateCsv == true) {
-            $messages->display('Success! Finish create CSV file', MessagesEnum::SUCCESS);
+        if ($resultGenerateCsv['status'] == 'success') {
+            $messages->display($resultGenerateCsv['message'], MessagesEnum::SUCCESS);
         } else {
-            $messages->display('Error! Not create CSV', MessagesEnum::ERROR);
+            $messages->display($resultGenerateCsv['message'], MessagesEnum::ERROR);
         }
     }
 
