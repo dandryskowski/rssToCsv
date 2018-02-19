@@ -2,8 +2,6 @@ Project Dariusz Andryskowski
 ============================
 ### Export RSS/Atom to CSV file
 
-:package_description
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -29,13 +27,13 @@ We can use two action to genrate CSV from RSS/ATOM
 - csv:extended URL PATH - retrieving the RSS / Atom data from the URL and entering them into the PATH.csv file specified by the PATH path. The old data from the PATH.csv file should be added.
 
 
-Eg. csv:simple
+An example of csv:simple
 ```
 php src/console.php csv:simple http://feeds.nationalgeographic.com/ng/News/News_Main eksport_simple.csv
 
 ```
 
-Eg. csv:extended
+An example of csv:extended
 
 ```
 php src/console.php csv:extended http://feeds.nationalgeographic.com/ng/News/News_Main eksport_extended.csv

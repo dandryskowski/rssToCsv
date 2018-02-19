@@ -1,22 +1,19 @@
 <?php
 /**
  * Validator data
- * User: Dariusz Andryskowski
- * Date: 19.02.2018
  */
-
 namespace DariuszAndryskowski\App\Lib;
 
-
-class Validator {
-
+class Validator
+{
     private static $instance;
 
     /**
      * Instance class Validator
      * @return Validator
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$instance == null) {
             self::$instance = new Validator();
         }
@@ -28,21 +25,21 @@ class Validator {
      * @param string $url
      * @return bool
      */
-    public function checkValidUrl($url) {
+    public function checkValidUrl($url)
+    {
         if (empty($url) || filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
             return false;
         }
-
         return true;
     }
-
 
     /**
      * Function check exist url
      * @param string $url
      * @return bool
      */
-    function checkExistUrl($url){
+    function checkExistUrl($url)
+    {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_NOBODY, true);
         curl_exec($ch);
@@ -57,6 +54,4 @@ class Validator {
         curl_close($ch);
         return $status;
     }
-
-
 }

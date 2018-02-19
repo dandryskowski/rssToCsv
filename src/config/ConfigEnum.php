@@ -1,14 +1,11 @@
 <?php
 /**
  * Config enums
- * User: Dariusz Andryskowski
- * Date: 19.02.2018
  */
-
 namespace DariuszAndryskowski\App\Config;
 
-class ConfigEnum {
-
+class ConfigEnum
+{
     /**
      * Default name file csv
      */
@@ -23,5 +20,4 @@ class ConfigEnum {
      * Extended type generate csv
      */
     const CSV_EXTENDED = 'csv:extended';
-
 }
